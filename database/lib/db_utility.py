@@ -1,15 +1,25 @@
 import sqlite3 as sql
 from .user import User
 
+db_path = '/Users/melanieguido/.dev/running_data_parser/database/rundata.db'
+
 # Add new user
-def addUserToDb(user):
+def add_user_to_db(user):
     # Open db connection
-    with sql.connect("rundata.db") as conn:
+    with sql.connect(db_path) as conn:
         curr = conn.cursor()
         curr.execute("INSERT INTO users VALUES(0, 'tigerbarras@gmail.com', '1-1-11')")
 
+def list_users():
+    # Open db connection
+    with sql.connect(db_path) as conn:
+        curr = conn.cursor()
+        users = curr.execute("SELECT * FROM users")
+        for row in users:
+            print(row)
+
 # Adds a new run to DB
-def addRunToDb():
+def add_run_to_db():
     # Connect to database
     conn = sql.connect('rundata.db')
     # Insert a new run(currently just dummy data)
@@ -19,7 +29,7 @@ def addRunToDb():
     # Close connection
     conn.close()
 
-def getRunsForUser(id):
+def list_runs_for_user(id):
     # Connect to database
     conn = sql.connect('rundata.db')
     # Get all runs for this user id
