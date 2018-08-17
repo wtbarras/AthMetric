@@ -11,7 +11,7 @@ with sqlite3.connect("rundata.db") as conn:
     curr.execute("CREATE TABLE IF NOT EXISTS users ( \
         user_id integer PRIMARY KEY, \
         email varchar(255), \
-        sign_up_date varchar(255), \
+        sign_up_date varchar(255) \
     );")
 
     # Create table for runs
@@ -21,9 +21,15 @@ with sqlite3.connect("rundata.db") as conn:
         distance real, \
         time varchar(255), \
         user_id integer, \
-        FOREIGN KEY (user_id) REFERENCES users (user_id), \
         shoe_id integer, \
+        FOREIGN KEY (user_id) REFERENCES users (user_id), \
         FOREIGN KEY (shoe_id) REFERENCES shoes (shoe_id) \
     );")
 
     # Create table for shoes
+    curr.execute("CREATE TABLE IF NOT EXISTS shoes (\
+        shoe_id integer PRIMARY KEY, \
+        name varchar(255), \
+        total_miles real, \
+        target_miles real \
+    );")
