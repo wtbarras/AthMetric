@@ -33,3 +33,5 @@ with sqlite3.connect("rundata.db") as conn:
         total_miles real, \
         target_miles real \
     );")
+
+    conn.commit();
