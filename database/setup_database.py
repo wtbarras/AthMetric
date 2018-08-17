@@ -8,14 +8,20 @@ with sqlite3.connect("rundata.db") as conn:
     curr = conn.cursor()
 
     # Create table for users
-
+    curr.execute("CREATE TABLE IF NOT EXISTS users ( \
+        user_id integer PRIMARY KEY, \
+        email varchar(255), \
+        sign_up_date varchar(255), \
+    );")
 
     # Create table for runs
     curr.execute("CREATE TABLE IF NOT EXISTS runs ( \
-        user_id integer PRIMARY KEY, \
+        run_id integer PRIMARY KEY, \
         date varchar(255), \
         distance real, \
         time varchar(255), \
+        user_id integer, \
+        FOREIGN KEY (user_id) REFERENCES users (user_id), \
         shoe_id integer, \
         FOREIGN KEY (shoe_id) REFERENCES shoes (shoe_id) \
     );")
