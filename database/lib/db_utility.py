@@ -1,8 +1,8 @@
 import sqlite3 as sql
-import objects/user.py
+from .user import user
 
 # Add new user
-def addUserToDb(User user):
+def addUserToDb(user):
     # Open db connection
     with sqlite3.connect("rundata.db") as conn:
         curr = conn.cursor()
