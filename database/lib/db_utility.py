@@ -1,10 +1,10 @@
 import sqlite3 as sql
-from .user import user
+from .user import User
 
 # Add new user
 def addUserToDb(user):
     # Open db connection
-    with sqlite3.connect("rundata.db") as conn:
+    with sql.connect("rundata.db") as conn:
         curr = conn.cursor()
         curr.execute("INSERT INTO users VALUES(0, 'tigerbarras@gmail.com', '1-1-11')")
 
