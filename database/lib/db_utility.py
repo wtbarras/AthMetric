@@ -8,7 +8,7 @@ def add_user_to_db(user):
     # Open db connection
     with sql.connect(db_path) as conn:
         curr = conn.cursor()
-        curr.execute("INSERT INTO users VALUES(0, 'tigerbarras@gmail.com', '1-1-11')")
+        curr.execute("INSERT INTO users VALUES(NULL, 'tigerbarras@gmail.com', '1-1-11')")
 
 def list_users():
     # Open db connection
@@ -19,7 +19,7 @@ def list_users():
             print(row)
 
 # Adds a new run to DB
-def add_run_to_db():
+def add_run_to_db(run):
     # Connect to database
     conn = sql.connect('rundata.db')
     # Insert a new run(currently just dummy data)
