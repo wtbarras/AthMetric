@@ -1,6 +1,6 @@
 class Shoe:
     
-    def __init(self, shoe_id, name, total_miles, target_miles)__:
+    def __init__(self, shoe_id, name, total_miles, target_miles):
         self.shoe_id = shoe_id
         self.name = name
         self.total_miles = total_miles
