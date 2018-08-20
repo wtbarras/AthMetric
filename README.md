@@ -17,6 +17,26 @@ The script will set up all the database tables, assuming they do not already exi
 
 The final step is to copy the full path to the database file and paste it into db_path variable in db_utility.py.
 
+# Running Flask
+### Linux and MacOS
+```
+export FLASK_APP=flaskr
+export FLASK_ENV=development
+flask run
+```
+### Windows PowerShell
+```
+$env:FLASK_APP = "flaskr"
+$env:FLASK_ENV = "development"
+flask run
+```
+### Windows CMD
+```
+set FLASK_APP=flaskr
+set FLASK_ENV=development
+flask run
+```
+
 # Tests
 Testing will be done with pytest. Currently there are none, but they're coming soon.
 
