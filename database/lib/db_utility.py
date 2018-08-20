@@ -23,7 +23,7 @@ def list_users():
 def add_run_to_db(run):
     # Connect to database
     conn = sql.connect(db_path)
-    # Insert a new run(currently just dummy data)
+    # Insert a new run
     conn.execute("INSERT INTO runs VALUES (NULL, ?, ?, ?, ?, ?)", (run.date, run.distance, run.time, run.user_id, run.shoe_id))
     # Save (commit) the changes
     conn.commit()
@@ -56,7 +56,36 @@ def list_all_runs():
 
 
 # Add shoe
+def add_shoe_to_db(shoe):
+    # Connect to database
+    conn = sql.connect(db_path)
+    # Insert run
+    conn.execute('INSERT INTO shoes VALUES (NULL, ?, ?, ?)', (shoe.name, shoe.total_miles, shoe.target_miles))
+    # Save changes
+    conn.commit()
+    # Close connection
+    conn.close()
 
 # List shoes for user
+def list_shoe_for_user(id):
+    # Connect to database
+    conn = sql.connect(db_path)
+    # Get all runs for this user id
+    runs = conn.execute('SELECT * FROM shoes WHERE user_id = ?', (id,))
+    # Print runs
+    for row in runs:
+        print(row)
+    # Close connection
+    conn.close()
 
 # List all shoes
+def list_all_shoes():
+    # Connect to database
+    conn = sql.connect(db_path)
+    # Get all runs for this user id
+    runs = conn.execute('SELECT * FROM shoes')
+    # Print runs
+    for row in runs:
+        print(row)
+    # Close connection
+    conn.close()
