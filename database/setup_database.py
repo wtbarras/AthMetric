@@ -31,7 +31,9 @@ with sqlite3.connect("rundata.db") as conn:
         shoe_id integer PRIMARY KEY, \
         name varchar(255), \
         total_miles real, \
-        target_miles real \
+        target_miles real, \
+        user_id integer, \
+        FOREIGN KEY (user_id) REFERENCES users (user_id)\
     );")
 
     conn.commit();
