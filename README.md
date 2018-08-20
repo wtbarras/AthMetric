@@ -30,6 +30,6 @@ There are two main goals that will be acheived during this project:
 Currently the database and surrounding utilities are being set up. Right now, there are methods to add or display users, runs, and shoes.
 
 ## To Do
-* Tests
 * Set up Flask
+* Tests
 * Set up Google Cloud
