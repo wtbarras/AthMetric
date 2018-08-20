@@ -10,6 +10,7 @@ def add_user_to_db(user):
         curr = conn.cursor()
         curr.execute("INSERT INTO users VALUES(NULL, ?, ?)", (user.email, user.sign_up_date))
 
+# List all users
 def list_users():
     # Open db connection
     with sql.connect(db_path) as conn:
@@ -18,7 +19,7 @@ def list_users():
         for row in users:
             print(row)
 
-# Adds a new run to DB
+# Add new run
 def add_run_to_db(run):
     # Connect to database
     conn = sql.connect(db_path)
@@ -29,6 +30,7 @@ def add_run_to_db(run):
     # Close connection
     conn.close()
 
+# List runs for user
 def list_runs_for_user(id):
     # Connect to database
     conn = sql.connect(db_path)
@@ -39,3 +41,22 @@ def list_runs_for_user(id):
         print(row)
     # Close connection
     conn.close()
+
+# List all runs
+def list_all_runs():
+    # Connect to database
+    conn = sql.connect(db_path)
+    # Get all runs for this user id
+    runs = conn.execute('SELECT * FROM runs')
+    # Print runs
+    for row in runs:
+        print(row)
+    # Close connection
+    conn.close()
+
+
+# Add shoe
+
+# List shoes for user
+
+# List all shoes
