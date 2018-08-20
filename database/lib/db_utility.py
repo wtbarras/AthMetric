@@ -21,9 +21,9 @@ def list_users():
 # Adds a new run to DB
 def add_run_to_db(run):
     # Connect to database
-    conn = sql.connect('rundata.db')
+    conn = sql.connect(db_path)
     # Insert a new run(currently just dummy data)
-    conn.execute("INSERT INTO runs VALUES (0, '2018-1-1', 1.1, '1:1:11', 0)")
+    conn.execute("INSERT INTO runs VALUES (NULL, ?, ?, ?, ?, ?)", (run.date, run.distance, run.time, run.user_id, run.shoe_id))
     # Save (commit) the changes
     conn.commit()
     # Close connection
@@ -31,9 +31,9 @@ def add_run_to_db(run):
 
 def list_runs_for_user(id):
     # Connect to database
-    conn = sql.connect('rundata.db')
+    conn = sql.connect(db_path)
     # Get all runs for this user id
-    runs = conn.execute('SELECT * FROM runs WHERE id = ?', (id,))
+    runs = conn.execute('SELECT * FROM runs WHERE user_id = ?', (id,))
     # Print runs
     for row in runs:
         print(row)
