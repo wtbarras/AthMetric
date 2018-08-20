@@ -8,7 +8,7 @@ def add_user_to_db(user):
     # Open db connection
     with sql.connect(db_path) as conn:
         curr = conn.cursor()
-        curr.execute("INSERT INTO users VALUES(NULL, 'tigerbarras@gmail.com', '1-1-11')")
+        curr.execute("INSERT INTO users VALUES(NULL, ?, ?)", (user.email, user.sign_up_date))
 
 def list_users():
     # Open db connection
