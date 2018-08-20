@@ -29,4 +29,7 @@ There are two main goals that will be acheived during this project:
 # Progress
 Currently the database and surrounding utilities are being set up. Right now, there are methods to add or display users, runs, and shoes.
 
-The next development push will be writing a test suite and then getting the flask server set up.
+## To Do
+* Tests
+* Set up Flask
+* Set up Google Cloud
