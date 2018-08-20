@@ -60,7 +60,7 @@ def add_shoe_to_db(shoe):
     # Connect to database
     conn = sql.connect(db_path)
     # Insert run
-    conn.execute('INSERT INTO shoes VALUES (NULL, ?, ?, ?)', (shoe.name, shoe.total_miles, shoe.target_miles))
+    conn.execute('INSERT INTO shoes VALUES (NULL, ?, ?, ?, ?)', (shoe.name, shoe.total_miles, shoe.target_miles, shoe.user_id))
     # Save changes
     conn.commit()
     # Close connection
