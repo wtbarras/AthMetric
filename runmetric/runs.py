@@ -17,6 +17,6 @@ def index():
     #     ' ORDER BY created DESC'
     # ).fetchall()
     runs = db.execute(
-        'SELECT * FROM RUNS'
+        'SELECT * FROM run'
     ).fetchall()
     return render_template('runs/index.html', runs=runs)
