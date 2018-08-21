@@ -28,6 +28,10 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
+    @app.route('/')
+    def index():
+        return 'Index Page'
+
     # A simple page that says hello
     @app.route('/hello')
     def hello():
