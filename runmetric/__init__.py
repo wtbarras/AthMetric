@@ -44,5 +44,6 @@ def create_app(test_config=None):
     # Register runs blueprint
     from . import runs
     app.register_blueprint(runs.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
