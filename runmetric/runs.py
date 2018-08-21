@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.exceptions import abort
 
@@ -29,7 +29,7 @@ def create():
         # Get data from form
         date = request.form['date']
         distance = request.form['distance']
-        time = request.form['time']
+        time = request.form['duration']
         shoe_id = request.form['shoe_id']
 
         # Check if any fields are missing
@@ -44,8 +44,8 @@ def create():
             # Add run to database
             db = get_db()
             db.execute(
-                'INSERT INTO run (date, distace, time, user_id, shoe_id)'
-                ' VALUES (?, ?, ?, ?)',
+                'INSERT INTO run (date, distance, time, user_id, shoe_id)'
+                ' VALUES (?, ?, ?, ?, ?)',
                 (date, distance, time, user_id, shoe_id)
                 )
             db.commit()
