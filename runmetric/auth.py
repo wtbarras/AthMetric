@@ -1,4 +1,5 @@
 import functools
+import time
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -23,14 +24,14 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE email = ?', (email,)
+            'SELECT user_id FROM user WHERE email = ?', (email,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(email)
 
         if error is None:
             db.execute(
-                'INSERT INTO user (email, password, created) VALUES (?, ?, ?)',
-                (username, generate_password_hash(password), time.time())
+                'INSERT INTO user (email, password) VALUES (?, ?)',
+                (email, generate_password_hash(password))
             )
             db.commit()
             return redirect(url_for('auth.login'))
@@ -52,7 +53,7 @@ def login():
         ).fetchone()
 
         if user is None:
-            error = 'Incorrect username.'
+            error = 'Incorrect email.'
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
 
