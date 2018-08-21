@@ -8,19 +8,19 @@ This app is running on a Flask server. Most of the setup is based on this [doc](
 ## Running Flask
 ### Linux and MacOS
 ```
-export FLASK_APP=flaskr
+export FLASK_APP=runmetric
 export FLASK_ENV=development
 flask run
 ```
 ### Windows PowerShell
 ```
-$env:FLASK_APP = "flaskr"
+$env:FLASK_APP = "runmertric"
 $env:FLASK_ENV = "development"
 flask run
 ```
 ### Windows CMD
 ```
-set FLASK_APP=flaskr
+set FLASK_APP=runmetric
 set FLASK_ENV=development
 flask run
 ```
