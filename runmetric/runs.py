@@ -8,7 +8,9 @@ from runmetric.db import get_db
 
 bp = Blueprint('runs', __name__)
 
+# Root. Displays user's runs
 @bp.route('/')
+@login_required
 def index():
     db = get_db()
     # posts = db.execute(
@@ -23,6 +25,7 @@ def index():
     return render_template('runs/index.html', runs=runs)
 
 @bp.route('/create', methods=('GET', 'POST'))
+@login_required
 def create():
     if request.method == 'POST':
         # Get id for logged in user
@@ -53,3 +56,17 @@ def create():
             return redirect(url_for('runs.index'))
     else:
         return render_template('runs/create.html')
+
+@bp.route('/<int:id>/update', methods=('GET', 'POST'))
+@login_required
+def update(id):
+    print(id)
+    db = get_db()
+    runs = db.execute(
+        'SELECT * FROM run WHERE run_id = ?',
+        (id,)
+    )
+    # In case the above query returns more than one row, we'll only use the first one
+    # But it should only ever return one row, since run_id is the primary key
+    run = runs.fetchone()
+    return render_template('runs/update.html', run=run)

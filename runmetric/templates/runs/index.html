@@ -32,6 +32,9 @@
     <p>
         <header>
             <h2>
+                {{ run['run_id'] }}
+            </h2>
+            <h2>
                 <div>
                     Date: {{ run['date'] }}
                 </div>
@@ -41,6 +44,7 @@
                         Distance: {{ run['distance'] }}
                 </div>
             </h3>
+            <a class="action" href="{{ url_for('runs.update', id=run['run_id']) }}">Update</a>
         </header>>
         {% if not loop.last %}
             <hr>
