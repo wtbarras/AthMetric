@@ -3,3 +3,17 @@
 {% block header %}
   <h1>{% block title %}Update Run {{ run['run_id'] }} {% endblock %}</h1>
 {% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="date">Date</label>
+    <input name="date" id="date" value="{{ run['date'] }}" required>
+    <label for="duration">Duration</label>
+    <input name="duration" id="duration" value="{{ run['time'] }}" required>
+    <label for="distance">Distance</label>
+    <input name="distance" id="distance" value="{{ run['distance'] }}" required>
+    <label for="shoe_id">Shoe</label>
+    <input name="shoe_id" id="shoe_id" value="{{ run['shoe_id'] }}">
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
