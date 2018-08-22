@@ -69,4 +69,17 @@ def update(id):
     # In case the above query returns more than one row, we'll only use the first one
     # But it should only ever return one row, since run_id is the primary key
     run = runs.fetchone()
+
+    if request.method == 'POST':
+        date = request.form['date']
+        duration = request.form['duration']
+        distance = request.form['distance']
+        shoe_id = request.form['shoe_id']
+
+        db.execute(
+            'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
+            ' WHERE run_id = ?',
+            (date, duration, distance, shoe_id, id))
+        db.commit()
+
     return render_template('runs/update.html', run=run)
