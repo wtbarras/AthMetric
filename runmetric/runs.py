@@ -17,7 +17,8 @@ def index():
     #     ' ORDER BY created DESC'
     # ).fetchall()
     runs = db.execute(
-        'SELECT * FROM run'
+        'SELECT * FROM run WHERE user_id = ?',
+        (session.get('user_id'),)
     ).fetchall()
     return render_template('runs/index.html', runs=runs)
 
