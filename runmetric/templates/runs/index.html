@@ -29,16 +29,22 @@
 
 {% block content %}
     {% for run in runs %}
+    <p>
         <header>
             <h2>
                 <div>
-                    {{ post['date'] }}
+                    Date: {{ run['date'] }}
                 </div>
             </h2>
             <h3>
                 <div>
-                        {{ post['distance'] }}
+                        Distance: {{ run['distance'] }}
                 </div>
             </h3>
+        </header>>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+    </p>
     {% endfor %}
 {% endblock %}
