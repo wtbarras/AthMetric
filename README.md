@@ -14,7 +14,7 @@ flask run
 ```
 ### Windows PowerShell
 ```
-$env:FLASK_APP = "runmertric"
+$env:FLASK_APP = "runmetric"
 $env:FLASK_ENV = "development"
 flask run
 ```
