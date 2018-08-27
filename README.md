@@ -49,5 +49,6 @@ Currently the database and surrounding utilities are being set up. Right now, th
 
 ## To Do
 * Set up Flask - Currently need to redo my database utility functions to work with the new flask database.
+* Add delete function
 * Tests
 * Set up Google Cloud
