@@ -4,6 +4,8 @@ import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
+from runmetric.models.database.run import Run
+
 
 def get_db():
     if 'db' not in g:
@@ -40,3 +42,18 @@ def init_db_command():
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+
+
+# DB util functions
+
+# Add a run
+def add_run(user_id, run):
+    db = get_db()
+    db.execute(
+        'INSERT INTO run (date, distance, time, user_id, shoe_id)'
+        ' VALUES (?, ?, ?, ?, ?)',
+        (run.date, run.distance, run.time, user_id, run.shoe_id)
+        )
+    db.commit()
+    return 0
+# Register a user
