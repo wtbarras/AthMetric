@@ -7,6 +7,7 @@ from runmetric.auth import login_required
 from runmetric.db import get_db
 from runmetric.db import add_run
 from runmetric.db import update_run
+from runmetric.db import get_run
 from runmetric.models.database.run import Run
 
 bp = Blueprint('runs', __name__)
@@ -55,7 +56,6 @@ def create():
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
-
     if request.method == 'POST':
         # Get id for logged in user
         user_id = session.get('user_id')
@@ -71,12 +71,8 @@ def update(id):
         # Redirect user back to main page
         return redirect(url_for('runs.index'))
     else:
-        db = get_db()
-        runs = db.execute(
-            'SELECT * FROM run WHERE run_id = ?',
-            (id,)
-        )
-        # In case the above query returns more than one row, we'll only use the first one
-        # But it should only ever return one row, since run_id is the primary key
-        run = runs.fetchone()
+        # GET
+        # Get run by id from db
+        run = get_run(id)
+        # Render update page for that run
         return render_template('runs/update.html', run=run)
