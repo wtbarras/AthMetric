@@ -68,6 +68,13 @@ def update_run(run_id, run):
     return 0
 
 # Delete a run
+def delete_run(run_id):
+    db = get_db()
+    db.execute(
+        'DELETE FROM run WHERE run_id = ?',
+        (run_id,))
+    db.commit()
+
 
 # Get a specific run entry
 def get_run(run_id):
