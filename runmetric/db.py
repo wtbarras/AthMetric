@@ -52,8 +52,18 @@ def add_run(user_id, run):
     db.execute(
         'INSERT INTO run (date, distance, time, user_id, shoe_id)'
         ' VALUES (?, ?, ?, ?, ?)',
-        (run.date, run.distance, run.time, user_id, run.shoe_id)
-        )
+        (run.date, run.distance, run.time, user_id, run.shoe_id))
     db.commit()
     return 0
+
+# Update a run
+def update_run(run_id, run):
+    db = get_db()
+    db.execute(
+        'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
+        ' WHERE run_id = ?',
+        (run.date, run.time, run.distance, run.shoe_id, run_id))
+    db.commit()
+    return 0
+
 # Register a user
