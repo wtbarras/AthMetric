@@ -44,7 +44,8 @@
                         Distance: {{ run['distance'] }}
                 </div>
             </h3>
-            <a class="action" href="{{ url_for('runs.update', id=run['run_id']) }}">Update</a>
+            <a class="action" href="{{ url_for('runs.update', id=run['run_id']) }}">UPDATE</a>
+            <a class="action" href="{{ url_for('runs.delete', id=run['run_id']) }}">DELETE</a>
         </header>>
         {% if not loop.last %}
             <hr>
