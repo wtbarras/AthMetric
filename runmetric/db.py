@@ -54,7 +54,7 @@ def add_run(user_id, run):
         ' VALUES (?, ?, ?, ?, ?)',
         (run.date, run.distance, run.time, user_id, run.shoe_id))
     db.commit()
-    return 0
+    close_db()
 
 # Update a run
 def update_run(run_id, run):
@@ -65,7 +65,7 @@ def update_run(run_id, run):
         (run.date, run.time, run.distance, run.shoe_id, run_id)
     )
     db.commit()
-    return 0
+    close_db()
 
 # Delete a run
 def delete_run(run_id):
@@ -74,6 +74,7 @@ def delete_run(run_id):
         'DELETE FROM run WHERE run_id = ?',
         (run_id,))
     db.commit()
+    close_db()
 
 
 # Get a specific run entry
@@ -87,6 +88,7 @@ def get_run(run_id):
     # In case the above query returns more than one row, we'll only use the first one
     # But it should only ever return one row, since run_id is the primary key
     run = runs.fetchone()
+    close_db()
     return run
 
 # Register a user
