@@ -76,3 +76,11 @@ def update(id):
         run = get_run(id)
         # Render update page for that run
         return render_template('runs/update.html', run=run)
+
+@bp.route('/<int:id>/delete', methods=('GET',))
+@login_required
+def delete(id):
+    print('Delete run with id')
+    print(id)
+    # Redirect user back to main page
+    return redirect(url_for('runs.index'))
