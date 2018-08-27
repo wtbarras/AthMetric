@@ -62,8 +62,24 @@ def update_run(run_id, run):
     db.execute(
         'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
         ' WHERE run_id = ?',
-        (run.date, run.time, run.distance, run.shoe_id, run_id))
+        (run.date, run.time, run.distance, run.shoe_id, run_id)
+    )
     db.commit()
     return 0
+
+# Delete a run
+
+# Get a specific run entry
+def get_run(run_id):
+    db = get_db()
+    # Get run from db that matches the supplied id
+    runs = db.execute(
+        'SELECT * FROM run WHERE run_id = ?',
+        (run_id,)
+    )
+    # In case the above query returns more than one row, we'll only use the first one
+    # But it should only ever return one row, since run_id is the primary key
+    run = runs.fetchone()
+    return run
 
 # Register a user
