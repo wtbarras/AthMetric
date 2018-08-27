@@ -6,6 +6,7 @@ from werkzeug.exceptions import abort
 from runmetric.auth import login_required
 from runmetric.db import get_db
 from runmetric.db import add_run
+from runmetric.db import update_run
 from runmetric.models.database.run import Run
 
 bp = Blueprint('runs', __name__)
@@ -54,26 +55,28 @@ def create():
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
-    print(id)
-    db = get_db()
-    runs = db.execute(
-        'SELECT * FROM run WHERE run_id = ?',
-        (id,)
-    )
-    # In case the above query returns more than one row, we'll only use the first one
-    # But it should only ever return one row, since run_id is the primary key
-    run = runs.fetchone()
 
     if request.method == 'POST':
+        # Get id for logged in user
+        user_id = session.get('user_id')
+        # Get data from form
         date = request.form['date']
         duration = request.form['duration']
         distance = request.form['distance']
         shoe_id = request.form['shoe_id']
-
-        db.execute(
-            'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
-            ' WHERE run_id = ?',
-            (date, duration, distance, shoe_id, id))
-        db.commit()
-
-    return render_template('runs/update.html', run=run)
+        # Create run object
+        run = Run(date, distance, duration, user_id, shoe_id)
+        # Update run
+        update_run(id, run)
+        # Redirect user back to main page
+        return redirect(url_for('runs.index'))
+    else:
+        db = get_db()
+        runs = db.execute(
+            'SELECT * FROM run WHERE run_id = ?',
+            (id,)
+        )
+        # In case the above query returns more than one row, we'll only use the first one
+        # But it should only ever return one row, since run_id is the primary key
+        run = runs.fetchone()
+        return render_template('runs/update.html', run=run)
