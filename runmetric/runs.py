@@ -4,11 +4,12 @@ from flask import (
 from werkzeug.exceptions import abort
 
 from runmetric.auth import login_required
+from runmetric.models.database.run import Run
 from runmetric.db import get_db
 from runmetric.db import add_run
 from runmetric.db import update_run
 from runmetric.db import get_run
-from runmetric.models.database.run import Run
+from runmetric.db import delete_run
 
 bp = Blueprint('runs', __name__)
 
@@ -80,7 +81,6 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('GET',))
 @login_required
 def delete(id):
-    print('Delete run with id')
-    print(id)
+    delete_run(id)
     # Redirect user back to main page
     return redirect(url_for('runs.index'))
