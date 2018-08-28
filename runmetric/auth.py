@@ -48,7 +48,6 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        db = get_db()
         error = None
         user = get_user_by_email(email)
 
