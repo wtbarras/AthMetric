@@ -81,13 +81,10 @@ def delete_run(run_id):
 def get_run(run_id):
     db = get_db()
     # Get run from db that matches the supplied id
-    runs = db.execute(
+    run = db.execute(
         'SELECT * FROM run WHERE run_id = ?',
         (run_id,)
-    )
-    # In case the above query returns more than one row, we'll only use the first one
-    # But it should only ever return one row, since run_id is the primary key
-    run = runs.fetchone()
+    ).fetchone()
     close_db()
     return run
 
