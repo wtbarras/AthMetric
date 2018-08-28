@@ -34,6 +34,9 @@ flask init-db
 ```
 This will run the init_db_command() function from the db.py file. The database will be created in the instance directory, which is not meant to be tracked in version control.
 
+# UI
+Currently I am using MDL to handle most of the UI work. Eventually I would like it to have a somewhat more unique look, but for now it just needs to not look terrible.
+
 # Tests
 Testing will be done with pytest. Currently there are none, but they're coming soon.
 
