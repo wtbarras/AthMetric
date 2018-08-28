@@ -48,7 +48,7 @@ There are three main goals that will be acheived during this project:
 Currently the database and surrounding utilities are being set up. Right now, there are methods to add or display users, runs, and shoes.
 
 ## To Do
-* Set up Flask - Currently need to redo my database utility functions to work with the new flask database.
-* Add delete function
+* Shoes
+* Some UI work to make things look a little less 2005
 * Tests
 * Set up Google Cloud
