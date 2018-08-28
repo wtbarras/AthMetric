@@ -31,9 +31,11 @@
     <section class="mdl-layout__tab-panel is-active" id="fixed-tab-2">
       <div class="page-content">
         <!-- Add new run -->
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-            <i class="material-icons">add</i>
-        </button>
+        <form action="{{ url_for('runs.create') }}", method='get'>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+              <i class="material-icons">add</i>
+          </button>
+        </form>
         {% block content %}
           {% for run in runs %}
           <div class="run">
