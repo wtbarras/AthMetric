@@ -11,7 +11,7 @@ html {
   
   h1, h2, h3, h4, h5, h6 {
     font-family: serif;
-    color: #d2d6db;
+    color: #2a3f5b;
     margin: 1rem 0;
   }
   
@@ -77,7 +77,12 @@ html {
   }
 
   .run {
-    background-color: #465f82
+    background-color: #465f82;
+    color: #d2d6db;
+  }
+
+  .run_header > h2, h3 {
+    color: #d2d6db;
   }
   
   .post > header {
