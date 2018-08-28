@@ -10,8 +10,8 @@
 {% block content %}
     {% for run in runs %}
     <div class="run">
-        <header>
-            <h2>
+        <header class="run_header">
+            <h2 class="run">
                 {{ run['run_id'] }}
             </h2>
             <h2>
@@ -26,10 +26,10 @@
             </h3>
             <a class="action" href="{{ url_for('runs.update', id=run['run_id']) }}">UPDATE</a>
             <a class="action" href="{{ url_for('runs.delete', id=run['run_id']) }}">DELETE</a>
-        </header>>
-        {% if not loop.last %}
+        </header>
+        <!-- {% if not loop.last %}
             <hr>
-        {% endif %}
+        {% endif %} -->
       </div>
     {% endfor %}
 {% endblock %}
