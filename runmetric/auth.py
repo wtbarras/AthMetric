@@ -6,9 +6,9 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from runmetric.db import get_db
 from runmetric.db import get_user_by_id
 from runmetric.db import get_user_by_email
+from runmetric.db import register_user
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -18,24 +18,17 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        db = get_db()
         error = None
 
         if not email:
             error = 'Email is required.'
         elif not password:
             error = 'Password is required.'
-        elif db.execute(
-            'SELECT user_id FROM user WHERE email = ?', (email,)
-        ).fetchone() is not None:
+        elif get_user_by_email(email) is not None:
             error = 'User {} is already registered.'.format(email)
 
         if error is None:
-            db.execute(
-                'INSERT INTO user (email, password) VALUES (?, ?)',
-                (email, generate_password_hash(password))
-            )
-            db.commit()
+            register_user(email, password)
             return redirect(url_for('auth.login'))
 
         flash(error)
