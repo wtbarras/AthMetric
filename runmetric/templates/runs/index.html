@@ -24,12 +24,23 @@
                         Distance: {{ run['distance'] }}
                 </div>
             </h3>
-            <a class="action" href="{{ url_for('runs.update', id=run['run_id']) }}">UPDATE</a>
-            <a class="action" href="{{ url_for('runs.delete', id=run['run_id']) }}">DELETE</a>
+            <!-- Submit button -->
+            <form action="{{ url_for('runs.update', id=run['run_id']) }}", method="get">
+              <button 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                type="submit">
+                  UPDATE
+              </button>
+            </form>
+            <!-- Delete button -->
+            <form action="{{ url_for('runs.delete', id=run['run_id']) }}", method="get">
+              <button 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                type="submit">
+                  DELETE
+              </button>
+            </form>
         </header>
-        <!-- {% if not loop.last %}
-            <hr>
-        {% endif %} -->
       </div>
     {% endfor %}
 {% endblock %}
