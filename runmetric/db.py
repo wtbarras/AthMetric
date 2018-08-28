@@ -89,3 +89,23 @@ def get_run(run_id):
     return run
 
 # Register a user
+
+# Get a user by email
+def get_user_by_email(email):
+    db = get_db()
+    user = db.execute(
+        'SELECT * FROM user WHERE email = ?',
+        (email,)
+    ).fetchone()
+    close_db()
+    return user
+    
+# Get a user by id
+def get_user_by_id(user_id):
+    db = get_db()
+    user = db.execute(
+        'SELECT * FROM user WHERE user_id = ?',
+        (user_id,)
+    ).fetchone()
+    close_db()
+    return user
