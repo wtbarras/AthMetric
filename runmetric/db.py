@@ -1,6 +1,7 @@
 import sqlite3
 
 import click
+from werkzeug.security import generate_password_hash
 from flask import current_app, g
 from flask.cli import with_appcontext
 
@@ -89,6 +90,13 @@ def get_run(run_id):
     return run
 
 # Register a user
+def register_user(email, password):
+    db = get_db()
+    db.execute(
+        'INSERT INTO user (email, password) VALUES (?, ?)',
+        (email, generate_password_hash(password)))
+    db.commit()
+    close_db()
 
 # Get a user by email
 def get_user_by_email(email):
