@@ -69,7 +69,8 @@ Currently the database and surrounding utilities are being set up. Right now, th
     - ~~Display runs~~
     - Format run entries
     - Make add run button sit in bottom right
-    - Add 'add shoe' button 
+    - Make add run button only show up on RUNS tab
+    - Add 'add shoe' button with same specs as add run button
 * Tests
     - Set up test framework in general
     - Run tests
