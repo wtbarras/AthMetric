@@ -52,6 +52,33 @@ Currently the database and surrounding utilities are being set up. Right now, th
 
 ## To Do
 * Shoes
+    - Util functions:
+        - Add
+        - Delete
+        - Edit
+    - Endpoints:
+        - Add
+        - Delete
+        - Edit
+    - UI:
+        - Display all shoes in shoe tab
 * Some UI work to make things look a little less 2005
+    - Nice landing page
+    - ~~Change interface to tabs~~
+    - Login/Logout buttons on top bar
+    - ~~Display runs~~
+    - Format run entries
+    - Make add run button sit in bottom right
+    - Add 'add shoe' button 
 * Tests
-* Set up Google Cloud
+    - Set up test framework in general
+    - Run tests
+    - Shoe tests
+    - Can the UI be tested?
+* DevOps
+    - Google Cloud
+        - Get app running on GC
+        - Move DB to GC SQL: https://cloud.google.com/sql/docs/
+            - Look into whether or not a noSql db would be better
+        - GC build: https://cloud.google.com/cloud-build/
+    - Docker
