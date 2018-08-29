@@ -52,15 +52,15 @@ Currently the database and surrounding utilities are being set up. Right now, th
 
 ## To Do
 * Shoes
-    - Util functions:
+    - Util functions
         - Add
         - Delete
         - Edit
-    - Endpoints:
+    - Endpoints
         - Add
         - Delete
         - Edit
-    - UI:
+    - UI
         - Display all shoes in shoe tab
 * Some UI work to make things look a little less 2005
     - Nice landing page
@@ -82,3 +82,6 @@ Currently the database and surrounding utilities are being set up. Right now, th
             - Look into whether or not a noSql db would be better
         - GC build: https://cloud.google.com/cloud-build/
     - Docker
+* General
+    - Come up with a better name
+    - Get a logo
