@@ -37,6 +37,12 @@ This will run the init_db_command() function from the db.py file. The database w
 # UI
 Currently I am using MDL to handle most of the UI work. Eventually I would like it to have a somewhat more unique look, but for now it just needs to not look terrible. Any feedback on how the website looks would be appreciated. 
 
+# Installing
+This app can be installed like any other python package. From the top level directory in the project, run this command:
+```
+pip install -e .
+```
+
 # Tests
 Testing will be done with pytest. Currently there are none, but they're coming soon.
 
