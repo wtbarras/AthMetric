@@ -1,0 +1,4 @@
+include runmetric/schema.sql
+graft runmetric/static
+graft runmetric/templates
+global-exclude *.pyc
