@@ -42,6 +42,11 @@ This app can be installed like any other python package. From the top level dire
 ```
 pip install -e .
 ```
+To make sure that it is installed, run:
+```
+pip list
+```
+Runmetric 1.0.0 will appear in the list.
 
 # Tests
 Testing will be done with pytest. Currently there are none, but they're coming soon.
