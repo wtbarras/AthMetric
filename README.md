@@ -8,21 +8,21 @@ This app is running on a Flask server. Most of the setup is based on this [doc](
 ## Running Flask
 ### Linux and MacOS
 ```
-export FLASK_APP=runmetric
-export FLASK_ENV=development
-flask run
+> export FLASK_APP=runmetric
+> export FLASK_ENV=development
+> flask run
 ```
 ### Windows PowerShell
 ```
-$env:FLASK_APP = "runmetric"
-$env:FLASK_ENV = "development"
-flask run
+> $env:FLASK_APP = "runmetric"
+> $env:FLASK_ENV = "development"
+> flask run
 ```
 ### Windows CMD
 ```
-set FLASK_APP=runmetric
-set FLASK_ENV=development
-flask run
+> set FLASK_APP=runmetric
+> set FLASK_ENV=development
+> flask run
 ```
 
 # Database
@@ -30,7 +30,7 @@ The current database for this app is sqlite3. It was chosen strictly because it 
 ### Initialize database
 To initialize the database, run this command:
 ```
-flask init-db
+> flask init-db
 ```
 This will run the init_db_command() function from the db.py file. The database will be created in the instance directory, which is not meant to be tracked in version control.
 
@@ -40,11 +40,11 @@ Currently I am using MDL to handle most of the UI work. Eventually I would like 
 # Installing
 This app can be installed like any other python package. From the top level directory in the project, run this command:
 ```
-pip install -e .
+> pip install -e .
 ```
 To make sure that it is installed, run:
 ```
-pip list
+> pip list
 ```
 Runmetric 1.0.0 will appear in the list.
 
