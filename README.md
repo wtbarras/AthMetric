@@ -49,7 +49,12 @@ pip list
 Runmetric 1.0.0 will appear in the list.
 
 # Tests
-Testing will be done with pytest. Currently there are none, but they're coming soon.
+Tests are containced in the 'tests' directory. The testing tool used is pytest. This should be installed with the rest of the project when using the method described in the 'Installing' section.
+To run the tests, run the following command from the top level directory in the project:
+```
+> pytest
+```
+This should automatically find the tests in the 'tests' directory and run all of them.
 
 # Goal
 There are three main goals that will be acheived during this project:
