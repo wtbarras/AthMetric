@@ -49,4 +49,10 @@ def test_login(client, auth):
         assert session['user_id'] == 1
         assert session['email'] == 'test'
 
-def test_login_validate_input(auth, username, password, message):
+@pytest.mark.parametrize(('email', 'password', 'message'), (
+    ('a', 'test', b'Incorrect email.'),
+    ('test', 'a', b'Incorrect password.'),
+))
+def test_login_validate_input(auth, email, password, message):
+    response = auth.login(email, password)
+    assert message in response.data
