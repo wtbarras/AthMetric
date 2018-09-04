@@ -33,3 +33,20 @@ def test_register_validate_input(client, email, password, message):
         data={'email': email, 'password':password}
     )
     assert message in response.data
+
+def test_login(client, auth):
+    # Check that the /auth/login endpoint is functioning
+    assert client.get('/auth/login').response == 200
+
+    # Make sure a successful login redirects to the index
+    response = auth.login()
+    assert response.headers['Location'] == 'https://localhost/'
+
+    # Using the with block, we can access session variables
+    with client:
+        client.get('/')
+        # Check that the proper user is logged in
+        assert session['user_id'] == 1
+        assert session['email'] == 'test'
+
+def test_login_validate_input(auth, username, password, message):
