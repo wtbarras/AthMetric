@@ -36,7 +36,7 @@ def test_register_validate_input(client, email, password, message):
 
 def test_login(client, auth):
     # Check that the /auth/login endpoint is functioning
-    assert client.get('/auth/login').response == 200
+    assert client.get('/auth/login').status_code == 200
 
     # Make sure a successful login redirects to the index
     response = auth.login()
