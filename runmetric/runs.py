@@ -78,7 +78,7 @@ def update(id):
         # Render update page for that run
         return render_template('runs/update.html', run=run)
 
-@bp.route('/<int:id>/delete', methods=('GET',))
+@bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
     delete_run(id)
