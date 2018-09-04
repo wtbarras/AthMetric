@@ -69,8 +69,9 @@ def load_logged_in_user():
         g.user = get_user_by_id(user_id)
 
 # /auth/logout
-@bp.route('/logout')
+@bp.route('/logout', methods=('POST',))
 def logout():
+    print('logout')
     session.clear()
     return redirect(url_for('index'))
 
