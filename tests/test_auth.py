@@ -23,7 +23,7 @@ def test_register(client, app):
 
 #Run the below test with three different sets of inputs
 @pytest.mark.parametrize(('email', 'password', 'message'), (
-    ('', '', b'Username is required.'),
+    ('', '', b'Email is required.'),
     ('a', '', b'Password is required'),
     ('test', 'test', b'already registered'),
 ))
