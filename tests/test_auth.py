@@ -40,7 +40,7 @@ def test_login(client, auth):
 
     # Make sure a successful login redirects to the index
     response = auth.login()
-    assert response.headers['Location'] == 'https://localhost/'
+    assert response.headers['Location'] == 'http://localhost/'
 
     # Using the with block, we can access session variables
     with client:
