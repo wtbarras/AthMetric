@@ -55,6 +55,19 @@ To run the tests, run the following command from the top level directory in the 
 > pytest
 ```
 This should automatically find the tests in the 'tests' directory and run all of them.
+Test coverage is calculated using Coverage. To calculate the current test coverage, run:
+```
+> coverage run -m pytest
+```
+This will generate a coverage report. To vew a text version, run:
+```
+> coverage report
+```
+Lastly, to view an html version, run:
+```
+> coverage html
+```
+The report will be generated in the htmlcov directory
 
 # Goal
 There are three main goals that will be acheived during this project:
