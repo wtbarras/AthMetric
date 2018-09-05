@@ -101,10 +101,7 @@ Currently the database and surrounding utilities are being set up. Right now, th
     - Make add run button only show up on RUNS tab
     - Add 'add shoe' button with same specs as add run button
 * Tests
-    - ~~Set up test framework in general~~
-    - Run tests
-    - Shoe tests
-    - Can the UI be tested?
+    - Tests are up to date. As development moves forward, more will be added.
 * DevOps
     - Google Cloud
         - Get app running on GC
