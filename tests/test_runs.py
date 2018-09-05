@@ -22,3 +22,23 @@ def test_login_required(client, path):
     # Make sure that these paths redirect non logged in users to the login page
     response = client.post(path)
     assert response.headers['Location'] == 'http://localhost/auth/login'
+
+@pytest.mark.parametrize(('path'),(
+    '/2/update',
+    '/2/delete',
+))
+def test_exists_required(client, auth, path):
+    # Log in so we don't get redirected to login page
+    auth.login()
+
+    response = client.post(path)
+    assert response.status_code == 404
+
+def test_create_run(client, auth, app):
+    auth.login()
+
+def test_update_run(client, auth, app):
+    auth.login()
+
+def test_delete_run(client, auth, app):
+    auth.login()
