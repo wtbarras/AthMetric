@@ -44,6 +44,7 @@ def create():
         # If there are errors, display them
         if error is not None:
             flash(error)
+            return ""
         else:
             # Create run object
             run = Run(date, distance, time, user_id, shoe_id)
