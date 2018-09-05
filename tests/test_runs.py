@@ -64,3 +64,11 @@ def test_update_run(client, auth, app):
 
 def test_delete_run(client, auth, app):
     auth.login()
+
+    # Post delete
+    client.post('/1/delete')
+
+    # Check to make sure data ended up in database
+    with app.app_context():
+        count = count_runs()
+        assert count == 0
