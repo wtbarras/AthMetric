@@ -46,4 +46,8 @@ def create_app(test_config=None):
     app.register_blueprint(runs.bp)
     app.add_url_rule('/', endpoint='index')
 
+    # Register shoes blueprint
+    from . import shoes
+    app.register_blueprint(shoes.bp)
+
     return app
