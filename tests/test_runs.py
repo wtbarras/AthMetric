@@ -64,7 +64,11 @@ def test_update_run(client, auth, app):
 
 @pytest.mark.parametrize(('path', 'post_data'), (
     ('/1/update', {'date': '', 'duration': '01:11:11', 'distance': '12.1', 'shoe_id': ''}),
+    ('/1/update', {'date': '2-2-2011', 'duration': '', 'distance': '12.1', 'shoe_id': ''}),
+    ('/1/update', {'date': '2-2-2011', 'duration': '01:11:11', 'distance': '', 'shoe_id': ''}),
     ('/create', {'date': '', 'duration': '01:11:11', 'distance': '12.1', 'shoe_id': ''}),
+    ('/create', {'date': '2-2-2011', 'duration': '', 'distance': '12.1', 'shoe_id': ''}),
+    ('/create', {'date': '2-2-2011', 'duration': '01:11:11', 'distance': '', 'shoe_id': ''}),
 ))
 def test_create_update_validate(client, auth, path, post_data):
     auth.login()
