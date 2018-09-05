@@ -1,5 +1,5 @@
 import pytest
-from runmetric.db import get_db
+from runmetric.db import get_db, count_runs
 
 def test_index(client, auth):
     # Make sure that the log in page is displayed if we haven't logged in yet
@@ -36,10 +36,20 @@ def test_exists_required(client, auth, path):
 
 def test_create_run(client, auth, app):
     auth.login()
+    # Make sure the endpoint works with the get method
     assert client.get('/create').status_code == 200
+
+    # post create data
+    client.post('/create', data={'date': '1-1-2018', 'duration': '01:01:01', 'distance': '11.1', 'shoe_id': ''})
+
+    # Check to make sure data ended up in database
+    with app.app_context():
+        count = count_runs()
+        assert count == 2
 
 def test_update_run(client, auth, app):
     auth.login()
+    # Make sure the endpoint works with the get method
     assert client.get('/1/update').status_code == 200
 
 def test_delete_run(client, auth, app):
