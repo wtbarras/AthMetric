@@ -58,6 +58,10 @@ def create():
 @login_required
 def update(id):
     if request.method == 'POST':
+        # Make sure that run exists
+        if get_run(id) == None:
+            return render_template('not_found.html'), 404
+
         # Get id for logged in user
         user_id = session.get('user_id')
         # Get data from form
