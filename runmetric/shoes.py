@@ -17,12 +17,12 @@ def display_shoes():
 def create_shoe():
     return "CREATE SHOES"
 
-@bp.route('/update')
+@bp.route('/<int:id>/update')
 @login_required
-def update_shoe():
+def update_shoe(id):
     return 'UPDATE SHOES'
 
-@bp.route('/delete')
+@bp.route('/<int:id>/delete')
 @login_required
-def delete_shoe():
+def delete_shoe(id):
     return 'DELETE SHOES'
