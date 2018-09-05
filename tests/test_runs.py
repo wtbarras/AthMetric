@@ -36,9 +36,11 @@ def test_exists_required(client, auth, path):
 
 def test_create_run(client, auth, app):
     auth.login()
+    assert client.get('/create').status_code == 200
 
 def test_update_run(client, auth, app):
     auth.login()
+    assert client.get('/1/update').status_code == 200
 
 def test_delete_run(client, auth, app):
     auth.login()
