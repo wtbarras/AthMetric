@@ -70,12 +70,23 @@ def update(id):
         duration = request.form['duration']
         distance = request.form['distance']
         shoe_id = request.form['shoe_id']
-        # Create run object
-        run = Run(date, distance, duration, user_id, shoe_id)
-        # Update run
-        update_run(id, run)
-        # Redirect user back to main page
-        return redirect(url_for('runs.index'))
+
+        # Check if any fields are missing
+        error = None
+        if not date or not distance or not duration:
+            error = "Missing fields"
+
+        # If there are errors, display them
+        if error is not None:
+            flash(error)
+            return ""
+        else:
+            # Create run object
+            run = Run(date, distance, duration, user_id, shoe_id)
+            # Update run
+            update_run(id, run)
+            # Redirect user back to main page
+            return redirect(url_for('runs.index'))
     else:
         # GET
         # Get run by id from db
