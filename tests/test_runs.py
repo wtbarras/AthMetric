@@ -62,6 +62,16 @@ def test_update_run(client, auth, app):
         assert run['distance'] == 12.1
         assert run['date'] == '2-2-2011'
 
+@pytest.mark.parametrize(('path', 'post_data'), (
+    ('/1/update', {'date': '', 'duration': '01:11:11', 'distance': '12.1', 'shoe_id': ''}),
+    ('/create', {'date': '', 'duration': '01:11:11', 'distance': '12.1', 'shoe_id': ''}),
+))
+def test_create_update_validate(client, auth, path, post_data):
+    auth.login()
+
+    response = client.post(path, data=post_data)
+    assert 'Location' not in response.headers
+
 def test_delete_run(client, auth, app):
     auth.login()
 
