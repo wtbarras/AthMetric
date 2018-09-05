@@ -89,6 +89,12 @@ def get_run(run_id):
     close_db()
     return run
 
+# Count the number of runs in the database
+def count_runs():
+    db = get_db()
+    count = db.execute('SELECT COUNT(run_id) FROM run').fetchone()[0]
+    return count
+
 # Register a user
 def register_user(email, password):
     db = get_db()
