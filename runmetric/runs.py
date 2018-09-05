@@ -81,6 +81,10 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
+    # Make sure that run exists
+    if get_run(id) == None:
+        return render_template('not_found.html'), 404
+
     delete_run(id)
     # Redirect user back to main page
     return redirect(url_for('runs.index'))
