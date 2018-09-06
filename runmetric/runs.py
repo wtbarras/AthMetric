@@ -58,11 +58,11 @@ def create():
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
+    # Make sure that run exists
+    if get_run_by_id(id) == None:
+        return render_template('not_found.html'), 404
+        
     if request.method == 'POST':
-        # Make sure that run exists
-        if get_run_by_id(id) == None:
-            return render_template('not_found.html'), 404
-
         # Get id for logged in user
         user_id = session.get('user_id')
         # Get data from form
