@@ -153,7 +153,14 @@ def delete_shoe(shoe_id):
 
 # Get a shoe by id
 def get_shoe_by_id(shoe_id):
-    return ""
+    db = get_db()
+    # Get run from db that matches the supplied id
+    shoe = db.execute(
+        'SELECT * FROM shoe WHERE shoe_id = ?',
+        (shoe_id,)
+    ).fetchone()
+    close_db()
+    return shoe
 
 # Get all shoes
 def get_all_shoes():
