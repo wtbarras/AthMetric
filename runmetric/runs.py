@@ -8,7 +8,7 @@ from runmetric.models.database.run import Run
 from runmetric.db import get_db
 from runmetric.db import add_run
 from runmetric.db import update_run
-from runmetric.db import get_run
+from runmetric.db import get_run_by_id
 from runmetric.db import delete_run
 
 bp = Blueprint('runs', __name__)
@@ -60,7 +60,7 @@ def create():
 def update(id):
     if request.method == 'POST':
         # Make sure that run exists
-        if get_run(id) == None:
+        if get_run_by_id(id) == None:
             return render_template('not_found.html'), 404
 
         # Get id for logged in user
@@ -90,7 +90,7 @@ def update(id):
     else:
         # GET
         # Get run by id from db
-        run = get_run(id)
+        run = get_run_by_id(id)
         # Render update page for that run
         return render_template('runs/update.html', run=run)
 
@@ -98,7 +98,7 @@ def update(id):
 @login_required
 def delete(id):
     # Make sure that run exists
-    if get_run(id) == None:
+    if get_run_by_id(id) == None:
         return render_template('not_found.html'), 404
 
     delete_run(id)

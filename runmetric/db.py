@@ -79,7 +79,7 @@ def delete_run(run_id):
 
 
 # Get a specific run entry
-def get_run(run_id):
+def get_run_by_id(run_id):
     db = get_db()
     # Get run from db that matches the supplied id
     run = db.execute(
