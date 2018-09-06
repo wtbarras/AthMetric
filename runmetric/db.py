@@ -77,6 +77,14 @@ def delete_run(run_id):
     db.commit()
     close_db()
 
+# Get all runs for this user
+def get_runs_for_user(id):
+    db = get_db()
+    runs = db.execute(
+        'SELECT * FROM run WHERE user_id = ?',
+        (id,)
+    ).fetchall()
+    return runs
 
 # Get a specific run entry
 def get_run_by_id(run_id):
@@ -139,6 +147,3 @@ def delete_shoe(shoe_id):
 # Get a shoe by id
 def get_shoe_by_id(shoe_id):
     return ""
-
-# Get all runs
-def get_all_runs():
