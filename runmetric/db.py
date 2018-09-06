@@ -133,11 +133,12 @@ def get_user_by_id(user_id):
     return user
 
 # Create a new shoe
-def add_shoe():
+def add_shoe(name, total_miles, target_miles, user_id):
     db = get_db()
     db.execute(
         'INSERT INTO shoe (name, total_miles, target_miles, user_id)'
-        'VALUES (?, ?, ?, ?)'
+        'VALUES (?, ?, ?, ?)',
+        (name, total_miles, target_miles, user_id)
     )
     db.commit()
     close_db()
