@@ -123,3 +123,22 @@ def get_user_by_id(user_id):
     ).fetchone()
     close_db()
     return user
+
+# Create a new shoe
+def create_shoe():
+    return ""
+
+# Edit a shoe
+def edit_shoe(shoe_id):
+    return ""
+
+# Delete a shoe
+def delete_shoe(shoe_id):
+    return ""
+
+# Get a shoe by id
+def get_shoe_by_id(shoe_id):
+    return ""
+
+# Get all runs
+def get_all_runs():
