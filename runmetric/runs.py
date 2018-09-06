@@ -18,7 +18,6 @@ bp = Blueprint('runs', __name__)
 @bp.route('/')
 @login_required
 def index():
-    db = get_db()
     # Get id for logged in user
     user_id = session.get('user_id')
     # Get all runs for user
