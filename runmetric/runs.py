@@ -9,6 +9,7 @@ from runmetric.db import get_db
 from runmetric.db import add_run
 from runmetric.db import update_run
 from runmetric.db import get_run_by_id
+from runmetric.db import get_runs_for_user
 from runmetric.db import delete_run
 
 bp = Blueprint('runs', __name__)
@@ -18,10 +19,10 @@ bp = Blueprint('runs', __name__)
 @login_required
 def index():
     db = get_db()
-    runs = db.execute(
-        'SELECT * FROM run WHERE user_id = ?',
-        (session.get('user_id'),)
-    ).fetchall()
+    # Get id for logged in user
+    user_id = session.get('user_id')
+    # Get all runs for user
+    runs = get_runs_for_user(user_id)
     return render_template('runs/index.html', runs=runs)
 
 @bp.route('/create', methods=('GET', 'POST'))
