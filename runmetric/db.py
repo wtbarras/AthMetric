@@ -153,3 +153,13 @@ def delete_shoe(shoe_id):
 # Get a shoe by id
 def get_shoe_by_id(shoe_id):
     return ""
+
+# Get all shoes
+def get_all_shoes():
+    return ""
+
+# Count all shoes associated with user
+def count_shoes():
+    db = get_db()
+    count = db.execute('SELECT COUNT(shoe_id) FROM shoe').fetchone()[0]
+    return count
