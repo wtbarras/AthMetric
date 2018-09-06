@@ -6,6 +6,7 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 
 from runmetric.models.database.run import Run
+from runmetric.models.database.shoe import Shoe
 
 
 def get_db():
@@ -144,8 +145,15 @@ def add_shoe(name, total_miles, target_miles, user_id):
     close_db()
 
 # Edit a shoe
-def edit_shoe(shoe_id):
-    return ""
+def edit_shoe(shoe_id, shoe):
+    db = get_db()
+    db.execute(
+        'UPDATE shoe SET name = ?, total_miles = ?, target_miles = ?, user_id = ?'
+        ' WHERE shoe_id = ?',
+        (shoe.name, shoe.total_miles, shoe.target_miles, shoe.user_id, shoe_id)
+    )
+    db.commit()
+    close_db()
 
 # Delete a shoe
 def delete_shoe(shoe_id):
