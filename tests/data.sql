@@ -6,3 +6,7 @@ VALUES
 INSERT INTO run (date, distance, time, user_id, shoe_id)
 VALUES
     ("1-1-2011", 11.11, "01:01:01", 0, 0);
+
+INSERT INTO shoe (name, total_miles, target_miles, user_id)
+VALUES
+    ("Inov8 235", 20.5, 350, 1)
