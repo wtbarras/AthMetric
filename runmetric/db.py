@@ -85,6 +85,7 @@ def get_runs_for_user(id):
         'SELECT * FROM run WHERE user_id = ?',
         (id,)
     ).fetchall()
+    close_db()
     return runs
 
 # Get a specific run entry
@@ -175,9 +176,14 @@ def get_shoe_by_id(shoe_id):
     close_db()
     return shoe
 
-# Get all shoes
-def get_all_shoes():
-    return ""
+# Get all shoes for user
+def get_shoes_for_user(user_id):
+    db = get_db()
+    shoes = db.execute(
+        'SELECT * FROM shoe WHERE user_id = ?',
+        (user_id,)
+    ).fetchall()
+    return shoes
 
 # Count all shoes associated with user
 def count_shoes():
