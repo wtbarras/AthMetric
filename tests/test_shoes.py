@@ -67,4 +67,10 @@ def test_delete_shoe(auth, client, app):
     response = client.post('/shoes/420/delete')
     assert response.status_code == 404
 
+    # Check that an existing run can be deleted
+    with app.app_context():
+        pre_shoe_count = count_shoes()
+
+    client.post('/shoes/1/delete')
+
     client.post()
