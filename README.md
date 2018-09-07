@@ -3,6 +3,9 @@ Parses a data on a series of runs and generates informative charts.
 
 The end goal is to create a website and mobile app that can track workouts and provide better data visualisation to athletes to enable evidence based training.
 
+# Google Cloud
+The app is currently configured to be deployed to Google App Engine.
+
 # Flask
 This app is running on a Flask server. Most of the setup is based on this [doc](http://flask.pocoo.org/docs/1.0/tutorial/factory/).
 ## Running Flask
