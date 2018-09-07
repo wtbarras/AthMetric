@@ -57,3 +57,14 @@ def test_update_shoe(auth, client, app):
         assert shoe['name'] == new_name
         assert shoe['total_miles'] == new_total_miles
         assert shoe['target_miles'] == new_target_miles
+
+# Test deleting a shoe entry
+def test_delete_shoe(auth, client, app):
+    # Log in so that route actually works
+    auth.login()
+
+    # Check that a nonexistant run cannot be deleted
+    response = client.post('/shoes/420/delete')
+    assert response.status_code == 404
+
+    client.post()
