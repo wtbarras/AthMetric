@@ -3,7 +3,7 @@ from flask import (
 )
 
 from runmetric.auth import login_required
-from runmetric.db import add_shoe, get_shoe_by_id, edit_shoe, delete_shoe
+from runmetric.db import add_shoe, get_shoe_by_id, edit_shoe, delete_shoe, get_shoes_for_user
 from runmetric.models.database.shoe import Shoe
 
 bp = Blueprint('shoes', __name__, url_prefix='/shoes')
@@ -12,7 +12,11 @@ bp = Blueprint('shoes', __name__, url_prefix='/shoes')
 @bp.route('/', methods=('GET',))
 @login_required
 def display_shoes():
-    return "SHOES"
+    # Get id for logged in user
+    user_id = session.get('user_id')
+    # Get all runs for user
+    shoes = get_shoes_for_user(user_id)
+    return render_template('/shoes/index.html', shoes=shoes)
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
