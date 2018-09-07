@@ -3,7 +3,7 @@ from flask import (
 )
 
 from runmetric.auth import login_required
-from runmetric.db import add_shoe, get_shoe_by_id, edit_shoe
+from runmetric.db import add_shoe, get_shoe_by_id, edit_shoe, delete_shoe
 from runmetric.models.database.shoe import Shoe
 
 bp = Blueprint('shoes', __name__, url_prefix='/shoes')
@@ -69,5 +69,11 @@ def update_shoe(id):
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
-def delete_shoe(id):
+def delete(id):
+    # Make sure that shoe exists
+    if get_shoe_by_id(id) == None:
+        return render_template('not_found.html'), 404
+
+    delete_shoe(id)
+
     return 'DELETE SHOES'
