@@ -114,4 +114,4 @@ Currently the database and surrounding utilities are being set up. Right now, th
     - Docker
 * General
     - Come up with a better name
-    - Get a logo
+    - Get a logo - 99 Designs?
