@@ -28,3 +28,14 @@ CREATE TABLE shoe (
         user_id INTEGER,
         FOREIGN KEY (user_id) REFERENCES users (user_id)
     );
+
+CREATE TABLE lifting_activity (
+        lift_id INTEGER PRIMARY KEY,
+        date varchar(255),
+        desc varchar(255),
+        start_time varchar(255),
+        end_time varchar(255),
+        lifting_data TEXT,
+        user_id INTEGER,
+        FOREIGN KEY (user_id) REFERENCES USERS(USER_ID)
+);
