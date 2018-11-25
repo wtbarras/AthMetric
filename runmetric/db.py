@@ -103,6 +103,7 @@ def get_run_by_id(run_id):
 def count_runs():
     db = get_db()
     count = db.execute('SELECT COUNT(run_id) FROM run').fetchone()[0]
+    close_db()
     return count
 
 # Register a user
@@ -183,12 +184,14 @@ def get_shoes_for_user(user_id):
         'SELECT * FROM shoe WHERE user_id = ?',
         (user_id,)
     ).fetchall()
+    close_db()
     return shoes
 
 # Count all shoes associated with user
 def count_shoes():
     db = get_db()
     count = db.execute('SELECT COUNT(shoe_id) FROM shoe').fetchone()[0]
+    close_db()
     return count
 
 # Create a lifting activity
