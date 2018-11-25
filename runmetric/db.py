@@ -190,3 +190,14 @@ def count_shoes():
     db = get_db()
     count = db.execute('SELECT COUNT(shoe_id) FROM shoe').fetchone()[0]
     return count
+
+# Create a lifting activity
+def create_lifting_activity():
+    db = get_db()
+        db.execute(
+        'INSERT INTO shoe (desc, date, start_time, end_time, lift_data, lift_id, user_id)'
+        'VALUES (?, ?, ?, ?, ?, ?, ?)',
+        (desc, date, start_time, end_time, lift_data, lift_id, user_id)
+    )
+    db.commit()
+    close_db()
