@@ -17,6 +17,15 @@ To make sure that it is installed, run:
 ```
 Runmetric 1.0.0 will appear in the list.
 
+# Database
+The current database for this app is sqlite3. It was chosen strictly because it is simple. If the app ever begins seeing heavy traffic, it will definitely need to be swapped out. I might switch to a Google Cloud SQL database sooner rather than later, just as a way to experiment with the product.
+### Initialize database
+To initialize the database, run this command:
+```
+> flask init-db
+```
+This will run the init_db_command() function from the db.py file. The database will be created in the instance directory, which is not meant to be tracked in version control.
+
 # virtualenv
 I like to run the app from within a Python virtualenv. This is particularly useful becuase runmetric uses Python3.5, while my system default is still 2.7.
 Virtualenv can be installed using pip:
@@ -64,15 +73,6 @@ This app is running on a Flask server. Most of the setup is based on this [doc](
 > set FLASK_ENV=development
 > flask run
 ```
-
-# Database
-The current database for this app is sqlite3. It was chosen strictly because it is simple. If the app ever begins seeing heavy traffic, it will definitely need to be swapped out. I might switch to a Google Cloud SQL database sooner rather than later, just as a way to experiment with the product.
-### Initialize database
-To initialize the database, run this command:
-```
-> flask init-db
-```
-This will run the init_db_command() function from the db.py file. The database will be created in the instance directory, which is not meant to be tracked in version control.
 
 # UI
 Currently I am using MDL to handle most of the UI work. Eventually I would like it to have a somewhat more unique look, but for now it just needs to not look terrible. Any feedback on how the website looks would be appreciated. 
