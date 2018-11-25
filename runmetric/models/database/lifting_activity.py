@@ -1,6 +1,6 @@
 class LiftingActivity:
 
-    def __init__(self, date, start_time, end_time, lift_data, lift_id):
+    def __init__(self, desc, date, start_time, end_time, lift_data, lift_id, user_id):
         self.description = desc
         self.date = date
         self.start_time = start_time
