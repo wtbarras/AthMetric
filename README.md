@@ -18,7 +18,7 @@ To make sure that it is installed, run:
 Runmetric 1.0.0 will appear in the list.
 
 # virtualenv
-I like to run the app from within a Python virtualenv.
+I like to run the app from within a Python virtualenv. This is particularly useful becuase runmetric uses Python3.5, while my system default is still 2.7.
 Virtualenv can be installed using pip:
 ```
 > pip3 install virtualenv
