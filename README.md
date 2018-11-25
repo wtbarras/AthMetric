@@ -9,13 +9,39 @@ The app is currently configured to be deployed to Google App Engine.
 # Installing
 This app can be installed like any other python package. From the top level directory in the project, run this command:
 ```
-> pip install -e .
+> pip3 install -e .
 ```
 To make sure that it is installed, run:
 ```
-> pip list
+> pip3 list
 ```
 Runmetric 1.0.0 will appear in the list.
+
+# virtualenv
+I like to run the app from within a Python virtualenv.
+Virtualenv can be installed using pip:
+```
+> pip3 install virtualenv
+```
+To initalize a virtualenv, run the followiung command from the top level directory of your project:
+```
+> virtualenv ENV
+```
+This will create an 'ENV' directory
+To activate the virtualenv, run the following command from the top level directory of your project:
+
+Bash:
+```
+> source ./ENV/bin/activate
+```
+Your command line will look something like this, indicating that the virtual env is activated:
+```
+(ENV) >
+```
+To exit the virtualenv:
+```
+(ENV) > deactivate
+```
 
 # Flask
 This app is running on a Flask server. Most of the setup is based on this [doc](http://flask.pocoo.org/docs/1.0/tutorial/factory/).
