@@ -6,6 +6,17 @@ The end goal is to create a website and mobile app that can track workouts and p
 # Google Cloud
 The app is currently configured to be deployed to Google App Engine.
 
+# Installing
+This app can be installed like any other python package. From the top level directory in the project, run this command:
+```
+> pip install -e .
+```
+To make sure that it is installed, run:
+```
+> pip list
+```
+Runmetric 1.0.0 will appear in the list.
+
 # Flask
 This app is running on a Flask server. Most of the setup is based on this [doc](http://flask.pocoo.org/docs/1.0/tutorial/factory/).
 ## Running Flask
@@ -39,17 +50,6 @@ This will run the init_db_command() function from the db.py file. The database w
 
 # UI
 Currently I am using MDL to handle most of the UI work. Eventually I would like it to have a somewhat more unique look, but for now it just needs to not look terrible. Any feedback on how the website looks would be appreciated. 
-
-# Installing
-This app can be installed like any other python package. From the top level directory in the project, run this command:
-```
-> pip install -e .
-```
-To make sure that it is installed, run:
-```
-> pip list
-```
-Runmetric 1.0.0 will appear in the list.
 
 # Tests
 Tests are containced in the 'tests' directory. The testing tool used is pytest. This should be installed with the rest of the project when using the method described in the 'Installing' section.
