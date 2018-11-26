@@ -46,6 +46,14 @@ def init_app(app):
     app.cli.add_command(init_db_command)
 
 
+# Wrapper function for DB commands
+# The SQL queries are in the model files, but this wrapper opens and closes the DB for them
+def run_query(query_function):
+    db = get_db()
+    results = query_function(db)
+    db.commit()
+    close_db()
+    return results
 # DB util functions
 
 # Add a run
