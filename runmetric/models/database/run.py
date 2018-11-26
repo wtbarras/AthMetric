@@ -7,6 +7,11 @@ class Run:
         self.user_id = user_id
         self.shoe_id = shoe_id
 
+
+    # NOTE:
+    # All the below functions are meant to be used with the runmetric.db.run_query() method. The run query method is what opens the DB
+    # connection and cleans it up afterward.
+    
     # Add a run
     def add_run(self, db):
         db.execute(
