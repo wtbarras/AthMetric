@@ -48,9 +48,12 @@ def init_app(app):
 
 # Wrapper function for DB commands
 # The SQL queries are in the model files, but this wrapper opens and closes the DB for them
-def run_query(query_function):
+def run_query(query_function, parameters=None):
     db = get_db()
-    results = query_function(db)
+    if parameters != None:
+        results = query_function(db, parameters)
+    else:
+        results = query_function(db)
     db.commit()
     close_db()
     return results
