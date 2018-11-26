@@ -13,6 +13,7 @@ class Run:
     # connection and cleans it up afterward.
 
     # Add a run
+    # For some reason adding @classmethod here breaks the method
     def add_run(self, db):
         db.execute(
             'INSERT INTO run (date, distance, time, user_id, shoe_id)'
@@ -28,10 +29,11 @@ class Run:
         )
 
     # Delete a run
-    def delete_run(run_id):
+    @staticmethod
+    def delete_run(db, parameters):
         db.execute(
             'DELETE FROM run WHERE run_id = ?',
-            (run_id,))
+            (parameters[0],))
 
     # Get all runs for this user
     def get_runs_for_user(id):
