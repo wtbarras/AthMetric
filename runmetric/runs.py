@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from runmetric.auth import login_required
 from runmetric.models.database.run import Run
 from runmetric.db import get_db
-from runmetric.db import add_run
+from runmetric.db import run_query
 from runmetric.db import update_run
 from runmetric.db import get_run_by_id
 from runmetric.db import get_runs_for_user
@@ -49,7 +49,7 @@ def create():
             # Create run object
             run = Run(date, distance, time, user_id, shoe_id)
             # Add run to database
-            add_run(user_id, run)
+            run_query(run.add_run)
             # Redirect user back to main page
             return redirect(url_for('runs.index'))
     else:
