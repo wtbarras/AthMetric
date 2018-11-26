@@ -7,7 +7,6 @@ from runmetric.auth import login_required
 from runmetric.models.database.run import Run
 from runmetric.db import get_db
 from runmetric.db import run_query
-from runmetric.db import update_run
 from runmetric.db import get_run_by_id
 from runmetric.db import get_runs_for_user
 from runmetric.db import delete_run
@@ -84,7 +83,8 @@ def update(id):
             # Create run object
             run = Run(date, distance, duration, user_id, shoe_id)
             # Update run
-            update_run(id, run)
+            parameters = [id,]
+            run_query(run.update_run, parameters)
             # Redirect user back to main page
             return redirect(url_for('runs.index'))
     else:
