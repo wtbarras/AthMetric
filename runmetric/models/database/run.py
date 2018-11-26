@@ -15,15 +15,12 @@ class Run:
             (self.date, self.distance, self.time, self.user_id, self.shoe_id))
 
     # Update a run
-    # def update_run(run_id, run):
-    #     db = get_db()
-    #     db.execute(
-    #         'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
-    #         ' WHERE run_id = ?',
-    #         (run.date, run.time, run.distance, run.shoe_id, run_id)
-    #     )
-    #     db.commit()
-    #     close_db()
+    def update_run(self, db, parameters):
+        db.execute(
+            'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
+            ' WHERE run_id = ?',
+            (self.date, self.time, self.distance, self.shoe_id, parameters[0])
+        )
 
     # # Delete a run
     # def delete_run(run_id):
