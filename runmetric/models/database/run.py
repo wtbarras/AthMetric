@@ -45,11 +45,11 @@ class Run:
         return runs
 
     # Get a specific run entry
-    def get_run_by_id(run_id):
+    def get_run_by_id(db, parameters):
         # Get run from db that matches the supplied id
         run = db.execute(
             'SELECT * FROM run WHERE run_id = ?',
-            (run_id,)
+            (parameters[0],)
         ).fetchone()
         return run
 
