@@ -59,57 +59,6 @@ def run_query(query_function, parameters=None):
     return results
 # DB util functions
 
-# Add a run
-# def add_run(user_id, run):
-#     db = get_db()
-#     db.execute(
-#         'INSERT INTO run (date, distance, time, user_id, shoe_id)'
-#         ' VALUES (?, ?, ?, ?, ?)',
-#         (run.date, run.distance, run.time, user_id, run.shoe_id))
-#     db.commit()
-#     close_db()
-
-# Update a run
-# def update_run(run_id, run):
-#     db = get_db()
-#     db.execute(
-#         'UPDATE run SET date = ?, time = ?, distance = ?, shoe_id = ?'
-#         ' WHERE run_id = ?',
-#         (run.date, run.time, run.distance, run.shoe_id, run_id)
-#     )
-#     db.commit()
-#     close_db()
-
-# Delete a run
-# def delete_run(run_id):
-#     db = get_db()
-#     db.execute(
-#         'DELETE FROM run WHERE run_id = ?',
-#         (run_id,))
-#     db.commit()
-#     close_db()
-
-# Get all runs for this user
-# def get_runs_for_user(id):
-#     db = get_db()
-#     runs = db.execute(
-#         'SELECT * FROM run WHERE user_id = ?',
-#         (id,)
-#     ).fetchall()
-#     close_db()
-#     return runs
-
-# Get a specific run entry
-def get_run_by_id(run_id):
-    db = get_db()
-    # Get run from db that matches the supplied id
-    run = db.execute(
-        'SELECT * FROM run WHERE run_id = ?',
-        (run_id,)
-    ).fetchone()
-    close_db()
-    return run
-
 # Count the number of runs in the database
 def count_runs():
     db = get_db()
