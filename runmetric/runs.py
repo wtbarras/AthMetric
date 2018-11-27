@@ -102,6 +102,7 @@ def delete(id):
     if get_run_by_id(id) == None:
         return render_template('not_found.html'), 404
 
-    run_query(Run.delete_run, [id,])
+    parameters = [id,]
+    run_query(Run.delete_run, parameters)
     # Redirect user back to main page
     return redirect(url_for('runs.index'))
