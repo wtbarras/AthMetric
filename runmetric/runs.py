@@ -20,7 +20,8 @@ def index():
     # Get id for logged in user
     user_id = session.get('user_id')
     # Get all runs for user
-    runs = get_runs_for_user(user_id)
+    parameters = [user_id,]
+    runs = run_query(Run.get_runs_for_user, parameters)
     return render_template('runs/index.html', runs=runs)
 
 @bp.route('/create', methods=('GET', 'POST'))
