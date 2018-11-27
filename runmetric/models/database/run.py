@@ -45,6 +45,7 @@ class Run:
         return runs
 
     # Get a specific run entry
+    @staticmethod
     def get_run_by_id(db, parameters):
         # Get run from db that matches the supplied id
         run = db.execute(
@@ -54,6 +55,7 @@ class Run:
         return run
 
     # Count the number of runs in the database
+    @staticmethod
     def count_runs():
         count = db.execute('SELECT COUNT(run_id) FROM run').fetchone()[0]
         return count
