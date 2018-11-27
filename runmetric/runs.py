@@ -5,11 +5,7 @@ from werkzeug.exceptions import abort
 
 from runmetric.auth import login_required
 from runmetric.models.database.run import Run
-from runmetric.db import get_db
 from runmetric.db import run_query
-from runmetric.db import get_run_by_id
-from runmetric.db import get_runs_for_user
-from runmetric.db import delete_run
 
 bp = Blueprint('runs', __name__)
 
@@ -59,7 +55,7 @@ def create():
 @login_required
 def update(id):
     # Make sure that run exists
-    if get_run_by_id(id) == None:
+    if run_query(Run.get_run_by_id, [id,]) == None:
         return render_template('not_found.html'), 404
         
     if request.method == 'POST':
@@ -91,7 +87,7 @@ def update(id):
     else:
         # GET
         # Get run by id from db
-        run = get_run_by_id(id)
+        run = run_query(Run.get_run_by_id, [id,])
         # Render update page for that run
         return render_template('runs/update.html', run=run)
 
