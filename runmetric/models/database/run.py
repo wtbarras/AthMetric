@@ -36,10 +36,11 @@ class Run:
             (parameters[0],))
 
     # Get all runs for this user
-    def get_runs_for_user(id):
+    @staticmethod
+    def get_runs_for_user(db, parameters):
         runs = db.execute(
             'SELECT * FROM run WHERE user_id = ?',
-            (id,)
+            (parameters[0],)
         ).fetchall()
         return runs
 
