@@ -56,6 +56,6 @@ class Run:
 
     # Count the number of runs in the database
     @staticmethod
-    def count_runs():
+    def count_runs(db):
         count = db.execute('SELECT COUNT(run_id) FROM run').fetchone()[0]
         return count
