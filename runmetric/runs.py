@@ -95,7 +95,7 @@ def update(id):
 @login_required
 def delete(id):
     # Make sure that run exists
-    if get_run_by_id(id) == None:
+    if run_query(Run.get_run_by_id, [id,]) == None:
         return render_template('not_found.html'), 404
 
     parameters = [id,]
