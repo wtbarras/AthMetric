@@ -23,7 +23,7 @@ The end goal is to create a website and mobile app that can track workouts and p
 [Progress](#Progress)
 
 # Google Cloud
-The app is currently configured to be deployed to Google App Engine.
+The app is currently configured to be deployed to Google App Engine. However, that is not a priority right now the the likelyhood of it being in good working order is slim.
 
 # Installing
 This app can be installed like any other python package. From the top level directory in the project, run this command:
