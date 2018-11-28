@@ -3,6 +3,25 @@ Parses a data on a series of runs and generates informative charts.
 
 The end goal is to create a website and mobile app that can track workouts and provide better data visualisation to athletes to enable evidence based training.
 
+# Table of Contents:
+[Google Cloud](#Google-Cloud)
+
+[Installing](#Installing)
+
+[Database](#Database)
+
+[VirtualEnv](#virtualenv)
+
+[Flask](#Flask)
+
+[UI](#UI)
+
+[Tests](#Tests)
+
+[Goal](#Goal)
+
+[Progress](#Progress)
+
 # Google Cloud
 The app is currently configured to be deployed to Google App Engine.
 
