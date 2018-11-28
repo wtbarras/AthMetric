@@ -1,5 +1,6 @@
 import pytest
-from runmetric.db import get_db, count_runs, get_run_by_id
+from runmetric.db import run_query
+from runmetric.models.database.run import Run
 
 def test_index(client, auth):
     # Make sure that the log in page is displayed if we haven't logged in yet
@@ -44,7 +45,7 @@ def test_create_run(client, auth, app):
 
     # Check to make sure data ended up in database
     with app.app_context():
-        count = count_runs()
+        count = run_query(Run.count_runs)
         assert count == 2
 
 def test_update_run(client, auth, app):
@@ -57,7 +58,7 @@ def test_update_run(client, auth, app):
 
     # Check to make sure the new data ended up in the original db entry
     with app.app_context():
-        run = get_run_by_id(1)
+        run = run_query(Run.get_run_by_id, [1,])
         assert run['time'] == '01:11:11'
         assert run['distance'] == 12.1
         assert run['date'] == '2-2-2011'
@@ -84,5 +85,5 @@ def test_delete_run(client, auth, app):
 
     # Check to make sure data ended up in database
     with app.app_context():
-        count = count_runs()
+        count = run_query(Run.count_runs)
         assert count == 0
