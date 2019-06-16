@@ -39,7 +39,7 @@ Runmetric 1.0.0 will appear in the list.
 # Database
 The current database for this app is sqlite3. It was chosen strictly because it is simple. If the app ever begins seeing heavy traffic, it will definitely need to be swapped out. I might switch to a Google Cloud SQL database sooner rather than later, just as a way to experiment with the product.
 ### Initialize database
-To initialize the database, run this command:
+To initialize the database, run this command from the Athmetric directory:
 ```
 > flask init-db
 ```
